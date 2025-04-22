@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {QuickFlashcard} from "./components/QuickFlashcard";
+import {FlashcardGame} from "./components/Quiz.tsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,11 +22,15 @@ function App() {
           <p className="read-the-docs">
               Click on the Vite and React logos to learn more
           </p>
-          <div style={{padding: 40}}>
+          <div className="p-10">
               <QuickFlashcard
                   question="Quelle est la capitale de l'Espagne ?"
                   options={['Madrid', 'Barcelone', 'Séville', 'Valence']}
                   correctAnswer="Madrid"
+              />
+          </div>
+          <div className="p-10">
+              <FlashcardGame
               />
           </div>
       </>
