@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-type FlashcardProps = {
+interface FlashcardProps {
     question: string;
     options: string[];
     correctAnswer: string;
-};
+}
 
 export const QuickFlashcard: React.FC<FlashcardProps> = ({ question, options, correctAnswer }) => {
     const [selected, setSelected] = useState<string | null>(null);
@@ -16,33 +16,38 @@ export const QuickFlashcard: React.FC<FlashcardProps> = ({ question, options, co
     };
 
     return (
-        <div style={{ border: '1px solid #ccc', padding: 16, borderRadius: 8, maxWidth: 400 }}>
-            <h3>{question}</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                {options.map((opt) => (
-                    <button
-                        key={opt}
-                        onClick={() => handleClick(opt)}
-                        disabled={!!selected}
-                        style={{
-                            padding: 8,
-                            backgroundColor:
-                                selected === opt
-                                    ? result
-                                        ? '#c8f7c5'
-                                        : '#f7c5c5'
-                                    : '#eee',
-                            cursor: selected ? 'default' : 'pointer',
-                            border: '1px solid #aaa',
-                            borderRadius: 4,
-                        }}
-                    >
-                        {opt}
-                    </button>
-                ))}
+        <div className="border border-gray-300 p-4 rounded-lg max-w-md">
+            <h3 className="text-lg font-semibold mb-4">{question}</h3>
+            <div className="flex flex-col gap-2">
+                {options.map((opt) => {
+                    const isSelected = selected === opt;
+                    const isCorrect = result === true;
+
+                    const baseStyle = 'px-4 py-2 border rounded cursor-pointer transition-colors';
+                    let selectedStyle: string;
+
+                    if (isSelected) {
+                        selectedStyle = isCorrect
+                            ? 'bg-green-200 border-green-400 cursor-default'
+                            : 'bg-red-200 border-red-400 cursor-default';
+                    } else {
+                        selectedStyle = 'bg-gray-100 border-gray-400 hover:bg-gray-200';
+                    }
+
+                    return (
+                        <button
+                            key={opt}
+                            onClick={() => { handleClick(opt); }}
+                            disabled={Boolean(selected)}
+                            className={`${baseStyle} ${selectedStyle}`}
+                        >
+                            {opt}
+                        </button>
+                    );
+                })}
             </div>
             {selected && (
-                <p style={{ marginTop: 12 }}>
+                <p className="mt-4">
                     {result ? '✅ Bonne réponse !' : '❌ Mauvaise réponse.'}
                 </p>
             )}
