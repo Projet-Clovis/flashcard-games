@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
-
-type FlashcardProps = {
-    question: string;
-    options: string[];
-    correctAnswer: string;
-};
-
-type Question = FlashcardProps & {
-    id: number;
-};
+import {useState, useEffect, useCallback} from 'react';
+import { calculateScore } from '../utils/scoreUtils';
+import { TimerBar } from './TimerBar';
+import { Flashcard } from './Flashcard';
+import { Question } from '../types/flashcardTypes';
 
 const questions: Question[] = [
     { id: 1, question: "Quelle est la capitale de l'Espagne ?", options: ['Madrid', 'Barcelone', 'Séville', 'Valence'], correctAnswer: 'Madrid' },
@@ -27,89 +21,57 @@ export const FlashcardGame = () => {
     const [isGameOver, setIsGameOver] = useState(false);
 
     const currentQuestion = questions[currentQuestionIndex];
+    const handleAnswerSelection = useCallback(
+        (answer: string | null) => {
+            if (answer) {
+                setSelectedAnswer(answer);
+                setIsAnswerCorrect(answer === currentQuestion.correctAnswer);
+                const points = calculateScore(timeLeft); // Calcul du score
+                setScore((prevScore) => prevScore + points);
+            } else {
+                setSelectedAnswer(null);
+                setIsAnswerCorrect(null);
+            }
 
-    // Timer countdown
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    setCurrentQuestionIndex(currentQuestionIndex + 1);
+                    setTimeLeft(10); // Réinitialiser le timer pour la question suivante
+                    setSelectedAnswer(null); // Réinitialiser la réponse sélectionnée
+                    setIsAnswerCorrect(null); // Réinitialiser la correction
+                } else {
+                    setIsGameOver(true);
+                }
+            }, 1000);
+        },
+        [currentQuestion.correctAnswer, currentQuestionIndex, timeLeft] // Dépendances de useCallback
+    );
+
+
     useEffect(() => {
         if (isGameOver) return;
         if (timeLeft === 0) {
-            handleAnswerSelection(null); // Automatically submit the answer if time runs out
+            handleAnswerSelection(null); // Soumettre la réponse si le temps est écoulé
         } else {
             const timer = setInterval(() => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
-
-            return () => clearInterval(timer);
+            return () => { clearInterval(timer); };
         }
-    }, [timeLeft, isGameOver]);
-
-    // Handle answer selection
-    const handleAnswerSelection = (answer: string | null) => {
-        if (answer) {
-            setSelectedAnswer(answer);
-            setIsAnswerCorrect(answer === currentQuestion.correctAnswer);
-
-            // Calculate score (higher score for quicker response)
-            const timeTaken = 10 - timeLeft; // Time taken to answer (in seconds)
-            const points = Math.max(50 - timeTaken * 5, 0); // Max score is 50, deduct points based on time
-            setScore((prevScore) => prevScore + points);
-        } else {
-            setSelectedAnswer(null);
-            setIsAnswerCorrect(null);
-        }
-
-        // Go to the next question or end the game
-        setTimeout(() => {
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setTimeLeft(10); // Reset the timer for the next question
-                setSelectedAnswer(null); // Reset the selected answer
-                setIsAnswerCorrect(null); // Reset the correctness of the answer
-            } else {
-                setIsGameOver(true);
-            }
-        }, 1000);
-    };
+    }, [timeLeft, isGameOver, handleAnswerSelection]);
 
     return (
         <div className="flex flex-col items-center justify-center p-6 max-w-md mx-auto">
             {!isGameOver ? (
                 <div className="w-full">
-                    <div className="text-2xl font-bold mb-4">{currentQuestion.question}</div>
-
-                    {/* Progress Bar */}
-                    <div className="w-full mb-4">
-                        <div className="h-2 bg-gray-200 rounded-full">
-                            <div
-                                className="h-2 bg-blue-500 rounded-full transition-all duration-1000 ease-in-out"
-                                style={{ width: `${(timeLeft / 10) * 100}%` }}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="space-y-4">
-                        {currentQuestion.options.map((option) => (
-                            <button
-                                key={option}
-                                onClick={() => handleAnswerSelection(option)}
-                                disabled={!!selectedAnswer} // Disable buttons after an answer is selected
-                                className={`w-full p-3 rounded-lg border border-gray-300 ${
-                                    selectedAnswer === option
-                                        ? isAnswerCorrect
-                                            ? 'bg-green-500 text-white'
-                                            : 'bg-red-500 text-white'
-                                        : 'bg-gray-100 hover:bg-gray-200'
-                                }`}
-                            >
-                                {option}
-                            </button>
-                        ))}
-                    </div>
-
-                    {selectedAnswer && (
-                        <div className="mt-4 text-lg">
-                            {isAnswerCorrect ? '✅ Bonne réponse !' : '❌ Mauvaise réponse.'}
-                        </div>
-                    )}
+                    <TimerBar timeLeft={timeLeft} />
+                    <Flashcard
+                        question={currentQuestion.question}
+                        options={currentQuestion.options}
+                        selectedAnswer={selectedAnswer}
+                        isAnswerCorrect={isAnswerCorrect}
+                        onAnswerSelect={handleAnswerSelection}
+                    />
                 </div>
             ) : (
                 <div className="flex flex-col items-center">
