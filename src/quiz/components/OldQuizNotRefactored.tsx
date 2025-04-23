@@ -1,8 +1,8 @@
 import {useState, useEffect, useCallback} from 'react';
-import { calculateScore } from '../utils/scoreUtils.ts';
-import { TimerBar } from './TimerBar.tsx';
-import { Flashcard } from '../../quiz/components/Flashcard.tsx';
-import { questions } from '../data/flashcards-content.ts';
+import { calculateScore } from '../../shared/utils/scoreUtils.ts';
+import { TimerBar } from '../../shared/components/TimerBar.tsx';
+import { Flashcard } from './Flashcard.tsx';
+import { questions } from '../../shared/data/flashcards-content.ts';
 
 
 export const FlashcardGame = () => {

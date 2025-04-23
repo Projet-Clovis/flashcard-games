@@ -1,6 +1,6 @@
 import { Question } from '../../shared/types/flashcardTypes.ts';
 
-export class FlashcardGameEngine {
+export class QuizEngine {
     private readonly questions: Question[];
     private currentIndex = 0;
     private readonly timeLimit: number;
