@@ -1,12 +1,12 @@
 import React from 'react';
 
-type FlashcardProps = {
+interface FlashcardProps {
     question: string;
     options: string[];
     selectedAnswer: string | null;
     isAnswerCorrect: boolean | null;
     onAnswerSelect: (answer: string) => void;
-};
+}
 
 export const Flashcard: React.FC<FlashcardProps> = ({
                                                         question,
@@ -22,7 +22,7 @@ export const Flashcard: React.FC<FlashcardProps> = ({
                 {options.map((option) => (
                     <button
                         key={option}
-                        onClick={() => onAnswerSelect(option)}
+                        onClick={() => { onAnswerSelect(option); }}
                         disabled={Boolean(selectedAnswer)} // Désactive après réponse
                         className={`w-full p-3 rounded-lg border border-gray-300 ${
                             selectedAnswer === option

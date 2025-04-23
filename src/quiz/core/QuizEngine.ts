@@ -1,4 +1,4 @@
-import { Question } from '../types/flashcardTypes';
+import { Question } from '../../shared/types/flashcardTypes.ts';
 
 export class FlashcardGameEngine {
     private readonly questions: Question[];
@@ -12,7 +12,7 @@ export class FlashcardGameEngine {
     public isAnswerCorrect: boolean | null = null;
     public isGameOver = false;
 
-    constructor(questions: Question[], timeLimit: number = 10) {
+    constructor(questions: Question[], timeLimit = 10) {
         this.questions = questions;
         this.timeLimit = timeLimit;
         this._timeLeft = timeLimit;

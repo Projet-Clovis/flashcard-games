@@ -1,4 +1,4 @@
-import {Question} from "../src/types/flashcardTypes";
+import {Question} from "../types/flashcardTypes.ts";
 
 export const questions: Question[] = [
     { id: 1, question: "Quelle est la capitale de l'Espagne ?", options: ['Madrid', 'Barcelone', 'Séville', 'Valence'], correctAnswer: 'Madrid' },
