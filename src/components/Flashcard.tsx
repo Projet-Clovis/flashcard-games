@@ -23,7 +23,7 @@ export const Flashcard: React.FC<FlashcardProps> = ({
                     <button
                         key={option}
                         onClick={() => onAnswerSelect(option)}
-                        disabled={!!selectedAnswer} // Désactive après réponse
+                        disabled={Boolean(selectedAnswer)} // Désactive après réponse
                         className={`w-full p-3 rounded-lg border border-gray-300 ${
                             selectedAnswer === option
                                 ? isAnswerCorrect

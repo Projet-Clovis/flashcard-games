@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {QuickFlashcard} from "./components/QuickFlashcard";
 import {FlashcardGame} from "./components/Quiz.tsx";
+import {FlashcardGameUI} from "./components/QuizUI.tsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,7 +31,7 @@ function App() {
               />
           </div>
           <div className="p-10">
-              <FlashcardGame
+              <FlashcardGameUI
               />
           </div>
       </>
