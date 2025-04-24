@@ -66,21 +66,23 @@ export class QuizEngine {
         setTimeout(() => {
             if (this.currentIndex < this.questions.length - 1) {
                 this.currentIndex++;
-                this._timeLeft = this.timeLimit;
-                this.selectedAnswer = null;
-                this.isAnswerCorrect = null;
+                this.resetTurn();
             } else {
                 this.isGameOver = true;
             }
         }, 500);
     }
-
-    reset() {
-        this.currentIndex = 0;
-        this.score = 0;
+    
+    resetTurn() {
         this._timeLeft = this.timeLimit;
         this.selectedAnswer = null;
         this.isAnswerCorrect = null;
+    }
+
+    resetGame() {
+        this.resetTurn();
+        this.currentIndex = 0;
+        this.score = 0;
         this.isGameOver = false;
     }
 }
