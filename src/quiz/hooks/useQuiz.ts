@@ -12,11 +12,20 @@ export function useFlashcardGame(questions: Question[]) {
             () => { handleAnswer(null); }
         );
         return () => { gameRef.current.stopCountdown(); };
-    }, []); // todo: deps missing?
+    }); // todo: deps missing?
 
     const handleAnswer = (answer: string | null) => {
         gameRef.current.answer(answer);
         setTick(t => t + 1); // force update
+    };
+
+    const reset = () => {
+        gameRef.current.reset();
+        setTick(t => t + 1);
+        gameRef.current.startCountdown(
+            () => { setTick(t => t + 1); },
+            () => { handleAnswer(null); }
+        );
     };
 
     return {
@@ -27,13 +36,6 @@ export function useFlashcardGame(questions: Question[]) {
         selectedAnswer: gameRef.current.selectedAnswer,
         isAnswerCorrect: gameRef.current.isAnswerCorrect,
         answer: handleAnswer,
-        reset: () => {
-            gameRef.current.reset();
-            setTick(t => t + 1);
-            gameRef.current.startCountdown(
-                () => { setTick(t => t + 1); },
-                () => { handleAnswer(null); }
-            );
-        }
+        reset:reset,
     };
 }
