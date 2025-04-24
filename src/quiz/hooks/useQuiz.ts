@@ -1,35 +1,32 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { QuizEngine } from '../core/QuizEngine.ts';
 import { Question } from '../../shared/types/flashcardTypes.ts';
 
 export function useFlashcardGame(questions: Question[]) {
     const gameRef = useRef(new QuizEngine(questions));
-    const [, setTick] = useState(0);
 
     useEffect(() => {
         gameRef.current.startCountdown(
-            () => { setTick(t => t + 1); },
+            () => {  },
             () => { handleAnswer(null); }
         );
     }); // todo: deps missing?
 
     const handleAnswer = (answer: string | null) => {
         gameRef.current.answer(answer);
-        setTick(t => t + 1); // force update
     };
 
     const reset = () => {
         gameRef.current.resetGame();
-        setTick(t => t + 1);
         gameRef.current.startCountdown(
-            () => { setTick(t => t + 1); },
+            () => {  },
             () => { handleAnswer(null); }
         );
     };
 
     return {
         question: gameRef.current.currentQuestion,
-        score: gameRef.current.currentScore,
+        score: gameRef.current.score,
         timeLeft: gameRef.current.timeLeft,
         isGameOver: gameRef.current.isGameOver,
         selectedAnswer: gameRef.current.selectedAnswer,

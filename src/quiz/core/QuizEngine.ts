@@ -1,88 +1,89 @@
+import { QuestionManager } from './QuestionManager';
+import { ScoreManager } from './ScoreManager';
+import { GameState } from './GameState';
+import { TimerService } from './TimerService';
 import { Question } from '../../shared/types/flashcardTypes.ts';
 
 export class QuizEngine {
-    private readonly questions: Question[];
-    private currentIndex = 0;
-    private readonly timeLimit: number;
-    private score = 0;
-    private _timeLeft: number;
-    private _timer: NodeJS.Timeout | null = null;
-
-    public selectedAnswer: string | null = null;
-    public isAnswerCorrect: boolean | null = null;
-    public isGameOver = false;
+    private questionManager: QuestionManager;
+    private scoreManager: ScoreManager;
+    private gameState: GameState;
+    private timerService: TimerService;
+    private readonly timeLimit:number;
 
     constructor(questions: Question[], timeLimit = 5) {
-        this.questions = questions;
+        this.questionManager = new QuestionManager(questions);
+        this.scoreManager = new ScoreManager();
+        this.gameState = new GameState();
+        this.timerService = new TimerService(timeLimit);
         this.timeLimit = timeLimit;
-        this._timeLeft = timeLimit;
     }
 
     get currentQuestion(): Question {
-        return this.questions[this.currentIndex];
+        return this.questionManager.currentQuestion;
+    }
+
+    get score(): number {
+        return this.scoreManager.currentScore;
     }
 
     get timeLeft(): number {
-        return this._timeLeft;
+        return this.timerService.timeLeft;
     }
 
-    get currentScore(): number {
-        return this.score;
+    get isGameOver(): boolean {
+        return this.gameState.gameOver;
+    }
+
+    get selectedAnswer(): string | null {
+        return this.gameState.currentAnswer;
+    }
+
+    get isAnswerCorrect(): boolean | null {
+        return this.gameState.answerCorrect;
     }
 
     startCountdown(onTick: (time: number) => void, onTimeout: () => void) {
-        this.stopCountdown();
-        this._timer = setInterval(() => {
-            this._timeLeft -= 0.2;
-            onTick(this._timeLeft);
-
-            if (this._timeLeft <= 0) {
-                this.stopCountdown();
-                onTimeout();
-            }
-        }, 200);
+        this.timerService.startCountdown(onTick, onTimeout);
     }
 
     stopCountdown() {
-        if (this._timer) clearInterval(this._timer);
-        this._timer = null;
+        this.timerService.stopCountdown();
     }
 
-    answer(answer: string | null): void {
+    resetTime() {
+        this.timerService.resetTime(this.timeLimit);
+    }
+
+    answer(answer: string | null) {
         this.stopCountdown();
 
-        if (answer !== null) {
-            this.selectedAnswer = answer;
-            this.isAnswerCorrect = answer === this.currentQuestion.correctAnswer;
-            if (this.isAnswerCorrect) {
-                const points = Math.max(0, this._timeLeft * 5);
-                this.score += points;
-            }
+        if (answer) {
+            const isCorrect = this.questionManager.isCorrect(
+                answer,
+                this.currentQuestion.correctAnswer
+            );
+
+            this.scoreManager.addPoints(isCorrect, this.timerService.timeLeft);
+            this.gameState.setAnswer(answer, isCorrect);
         } else {
-            this.selectedAnswer = null;
-            this.isAnswerCorrect = null;
+            this.gameState.setAnswer(null, null);
         }
 
         setTimeout(() => {
-            if (this.currentIndex < this.questions.length - 1) {
-                this.currentIndex++;
-                this.resetTurn();
+            if (this.questionManager.nextQuestion) {
+                this.questionManager.next();
+                this.resetTime();
             } else {
-                this.isGameOver = true;
+                this.gameState.endGame();
             }
         }, 500);
     }
-    
-    resetTurn() {
-        this._timeLeft = this.timeLimit;
-        this.selectedAnswer = null;
-        this.isAnswerCorrect = null;
-    }
 
     resetGame() {
-        this.resetTurn();
-        this.currentIndex = 0;
-        this.score = 0;
-        this.isGameOver = false;
+        this.questionManager.reset();
+        this.scoreManager.reset();
+        this.gameState.reset();
+        this.resetTime();
     }
 }
