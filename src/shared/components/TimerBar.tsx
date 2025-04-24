@@ -1,3 +1,5 @@
+import React from "react";
+
 interface TimerBarProps {
     timeLeft: number;
 }
@@ -11,6 +13,7 @@ export const TimerBar: React.FC<TimerBarProps> = ({ timeLeft }) => {
                     style={{ width: `${(timeLeft / 10) * 100}%` }}
                 />
             </div>
+            <p className="text-center mt-1">{timeLeft.toFixed(1)} s</p>
         </div>
     );
 };
