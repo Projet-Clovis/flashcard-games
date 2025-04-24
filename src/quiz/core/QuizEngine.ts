@@ -12,7 +12,7 @@ export class QuizEngine {
     public isAnswerCorrect: boolean | null = null;
     public isGameOver = false;
 
-    constructor(questions: Question[], timeLimit = 10) {
+    constructor(questions: Question[], timeLimit = 5) {
         this.questions = questions;
         this.timeLimit = timeLimit;
         this._timeLeft = timeLimit;
