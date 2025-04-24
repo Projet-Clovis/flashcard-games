@@ -31,6 +31,7 @@ export class QuizEngine {
     }
 
     startCountdown(onTick: (time: number) => void, onTimeout: () => void) {
+        this.stopCountdown();
         this._timer = setInterval(() => {
             this._timeLeft -= 0.2;
             onTick(this._timeLeft);
