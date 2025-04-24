@@ -51,7 +51,7 @@ export class QuizEngine {
     answer(answer: string | null): void {
         this.stopCountdown();
 
-        if (answer) {
+        if (answer !== null) {
             this.selectedAnswer = answer;
             this.isAnswerCorrect = answer === this.currentQuestion.correctAnswer;
             if (this.isAnswerCorrect) {
