@@ -36,6 +36,6 @@ export function useFlashcardGame(questions: Question[]) {
         selectedAnswer: gameRef.current.selectedAnswer,
         isAnswerCorrect: gameRef.current.isAnswerCorrect,
         answer: handleAnswer,
-        reset:reset,
+        reset: reset,
     };
 }
