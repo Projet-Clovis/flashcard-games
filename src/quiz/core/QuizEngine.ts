@@ -32,13 +32,14 @@ export class QuizEngine {
 
     startCountdown(onTick: (time: number) => void, onTimeout: () => void) {
         this._timer = setInterval(() => {
-            this._timeLeft--;
+            this._timeLeft -= 0.2;
             onTick(this._timeLeft);
+
             if (this._timeLeft <= 0) {
                 this.stopCountdown();
                 onTimeout();
             }
-        }, 1000);
+        }, 200);
     }
 
     stopCountdown() {
@@ -47,6 +48,8 @@ export class QuizEngine {
     }
 
     answer(answer: string | null): void {
+        this.stopCountdown();
+
         if (answer) {
             this.selectedAnswer = answer;
             this.isAnswerCorrect = answer === this.currentQuestion.correctAnswer;
@@ -59,8 +62,6 @@ export class QuizEngine {
             this.isAnswerCorrect = null;
         }
 
-        this.stopCountdown();
-
         setTimeout(() => {
             if (this.currentIndex < this.questions.length - 1) {
                 this.currentIndex++;
@@ -70,7 +71,7 @@ export class QuizEngine {
             } else {
                 this.isGameOver = true;
             }
-        }, 1000);
+        }, 500);
     }
 
     reset() {
