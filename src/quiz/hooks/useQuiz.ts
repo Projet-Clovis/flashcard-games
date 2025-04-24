@@ -4,7 +4,7 @@ import { Question } from '../../shared/types/flashcardTypes.ts';
 
 export function useFlashcardGame(questions: Question[]) {
     const gameRef = useRef(new QuizEngine(questions));
-    const [tick, setTick] = useState(0);
+    const [, setTick] = useState(0);
 
     useEffect(() => {
         gameRef.current.startCountdown(
