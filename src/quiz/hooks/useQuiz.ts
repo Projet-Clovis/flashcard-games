@@ -11,7 +11,6 @@ export function useFlashcardGame(questions: Question[]) {
             () => { setTick(t => t + 1); },
             () => { handleAnswer(null); }
         );
-        return () => { gameRef.current.stopCountdown(); };
     }); // todo: deps missing?
 
     const handleAnswer = (answer: string | null) => {
@@ -20,7 +19,7 @@ export function useFlashcardGame(questions: Question[]) {
     };
 
     const reset = () => {
-        gameRef.current.reset();
+        gameRef.current.resetGame();
         setTick(t => t + 1);
         gameRef.current.startCountdown(
             () => { setTick(t => t + 1); },
