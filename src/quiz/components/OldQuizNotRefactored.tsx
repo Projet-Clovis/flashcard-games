@@ -19,11 +19,15 @@ export const FlashcardGame = () => {
     const currentQuestion = questions[currentQuestionIndex];
     const handleAnswerSelection = useCallback(
         (answer: string | null) => {
-            if (answer) {
+            if (answer !== null) {
                 setSelectedAnswer(answer);
                 setIsAnswerCorrect(answer === currentQuestion.correctAnswer);
-                const points = calculateScore(timeLeft); // Calcul du score
-                setScore((prevScore) => prevScore + points);
+
+                if (answer === currentQuestion.correctAnswer) {
+                    const points = calculateScore(timeLeft); // Calcul du score
+                    setScore((prevScore) => prevScore + points);
+                }
+
             } else {
                 setSelectedAnswer(null);
                 setIsAnswerCorrect(null);
