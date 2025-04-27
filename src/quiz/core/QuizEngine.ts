@@ -1,4 +1,4 @@
-import { Question } from "../../shared/types/flashcardTypes.ts";
+import type { Question } from "../../shared/types/flashcardTypes.ts";
 
 export class QuizEngine {
     private readonly questions: Question[];

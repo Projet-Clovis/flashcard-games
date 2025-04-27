@@ -1,4 +1,4 @@
-import { Question } from "../types/flashcardTypes.ts";
+import type { Question } from "../types/flashcardTypes.ts";
 
 export const questions: Question[] = [
     {
