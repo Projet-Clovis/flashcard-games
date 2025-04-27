@@ -45,7 +45,7 @@ export const FlashcardGame = () => {
 
     useEffect(() => {
         if (isGameOver) return;
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             handleAnswerSelection(null); // Soumettre la réponse si le temps est écoulé
         } else {
             const timer = setInterval(() => {
