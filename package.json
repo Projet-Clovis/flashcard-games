@@ -4,10 +4,13 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "ci": "npx @biomejs/biome ci src",
+    "dev": "vite",
+    "lint": "npx @biomejs/biome check src --fix && eslint .",
+    "preview": "vite preview",
+    "test": "",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.0.0",
