@@ -19,7 +19,7 @@ export const FlashcardGameUI = () => {
         <div className="p-6 max-w-md mx-auto">
             {!isGameOver ? (
                 <>
-                    <TimerBar timeLeft={timeLeft} />
+                    <TimerBar timeLeft={timeLeft} timeLimit={10} />
                     <Flashcard
                         question={question.question}
                         options={question.options}
