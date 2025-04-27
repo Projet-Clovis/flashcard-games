@@ -1,10 +1,10 @@
-import { FlashcardGameUI } from "../../quiz/components/QuizUI.tsx";
+import {FlashcardGame} from "../../quiz/components/OldQuizNotRefactored.tsx";
 
 function App() {
     return (
         <>
             <div className="p-10">
-                <FlashcardGameUI />
+                <FlashcardGame />
             </div>
         </>
     );
