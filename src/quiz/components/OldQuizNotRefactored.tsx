@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
-import { calculateScore } from "../../shared/utils/scoreUtils.ts";
+import { useCallback, useEffect, useState } from "react";
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
-import { Flashcard } from "./Flashcard.tsx";
 import { questions } from "../../shared/data/flashcards-content.ts";
+import { calculateScore } from "../../shared/utils/scoreUtils.ts";
+import { Flashcard } from "./Flashcard.tsx";
 
 export const FlashcardGame = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -74,7 +74,8 @@ export const FlashcardGame = () => {
                     <div className="text-lg mb-4">
                         Votre score final est : {score} points
                     </div>
-                    <button type="button"
+                    <button
+                        type="button"
                         onClick={() => {
                             setCurrentQuestionIndex(0);
                             setScore(0);
