@@ -4,13 +4,15 @@ import { questions } from "../../shared/data/flashcards-content.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
 import { Flashcard } from "./Flashcard.tsx";
 
+const maxTime = 10;
+
 export const FlashcardGame = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(
         null,
     );
-    const [timeLeft, setTimeLeft] = useState(10);
+    const [timeLeft, setTimeLeft] = useState(maxTime);
     const [score, setScore] = useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
 
@@ -30,7 +32,7 @@ export const FlashcardGame = () => {
             setTimeout(() => {
                 if (currentQuestionIndex < questions.length - 1) {
                     setCurrentQuestionIndex(currentQuestionIndex + 1);
-                    setTimeLeft(10); // Réinitialiser le timer pour la question suivante
+                    setTimeLeft(maxTime); // Réinitialiser le timer pour la question suivante
                     setSelectedAnswer(null); // Réinitialiser la réponse sélectionnée
                     setIsAnswerCorrect(null); // Réinitialiser la correction
                 } else {
@@ -79,7 +81,7 @@ export const FlashcardGame = () => {
                         onClick={() => {
                             setCurrentQuestionIndex(0);
                             setScore(0);
-                            setTimeLeft(10);
+                            setTimeLeft(maxTime);
                             setIsGameOver(false);
                         }}
                         className="bg-blue-500 text-white p-3 rounded-lg"
