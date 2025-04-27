@@ -84,6 +84,8 @@ export const FlashcardGame = () => {
                             setScore(0);
                             setTimeLeft(maxTime);
                             setIsGameOver(false);
+                            setSelectedAnswer(null);
+                            setIsAnswerCorrect(null);
                         }}
                         className="bg-blue-500 text-white p-3 rounded-lg"
                     >
