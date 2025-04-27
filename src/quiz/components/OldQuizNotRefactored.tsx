@@ -59,7 +59,7 @@ export const FlashcardGame = () => {
         <div className="flex flex-col items-center justify-center p-6 max-w-md mx-auto">
             {!isGameOver ? (
                 <div className="w-full">
-                    <TimerBar timeLeft={timeLeft} />
+                    <TimerBar timeLeft={timeLeft} timeLimit={maxTime} />
                     <Flashcard
                         question={currentQuestion.question}
                         options={currentQuestion.options}
