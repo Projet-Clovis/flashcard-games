@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
 import { questions } from "../../shared/data/flashcards-content.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
-import { Flashcard } from "./Flashcard.tsx";
+import {AnimatedFlashcard} from "./AnimatedFlashcard.tsx";
 
 const maxTime = 3;
 
@@ -19,11 +19,15 @@ export const FlashcardGame = () => {
     const currentQuestion = questions[currentQuestionIndex];
     const handleAnswerSelection = useCallback(
         (answer: string | null) => {
-            if (answer) {
+            if (answer !== null) {
                 setSelectedAnswer(answer);
                 setIsAnswerCorrect(answer === currentQuestion.correctAnswer);
-                const points = calculateScore(timeLeft); // Calcul du score
-                setScore((prevScore) => prevScore + points);
+
+                if (answer === currentQuestion.correctAnswer) {
+                    const points = calculateScore(timeLeft); // Calcul du score
+                    setScore((prevScore) => prevScore + points);
+                }
+
             } else {
                 setSelectedAnswer(null);
                 setIsAnswerCorrect(null);
@@ -62,7 +66,8 @@ export const FlashcardGame = () => {
             {!isGameOver ? (
                 <div className="w-full">
                     <TimerBar timeLeft={timeLeft} timeLimit={maxTime} />
-                    <Flashcard
+                    <AnimatedFlashcard
+                        keyProp={String(currentQuestionIndex)}
                         question={currentQuestion.question}
                         options={currentQuestion.options}
                         selectedAnswer={selectedAnswer}
@@ -83,6 +88,8 @@ export const FlashcardGame = () => {
                             setScore(0);
                             setTimeLeft(maxTime);
                             setIsGameOver(false);
+                            setSelectedAnswer(null);
+                            setIsAnswerCorrect(null);
                         }}
                         className="bg-blue-500 text-white p-3 rounded-lg"
                     >
