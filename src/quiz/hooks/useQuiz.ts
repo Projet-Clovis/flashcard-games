@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { QuizEngine } from '../core/QuizEngine.ts';
-import { Question } from '../../shared/types/flashcardTypes.ts';
+import { useEffect, useRef, useState } from "react";
+import { QuizEngine } from "../core/QuizEngine.ts";
+import { Question } from "../../shared/types/flashcardTypes.ts";
 
 export function useFlashcardGame(questions: Question[]) {
     const gameRef = useRef(new QuizEngine(questions));
@@ -8,22 +8,30 @@ export function useFlashcardGame(questions: Question[]) {
 
     useEffect(() => {
         gameRef.current.startCountdown(
-            () => { setTick(t => t + 1); },
-            () => { handleAnswer(null); }
+            () => {
+                setTick((t) => t + 1);
+            },
+            () => {
+                handleAnswer(null);
+            },
         );
     }); // todo: deps missing?
 
     const handleAnswer = (answer: string | null) => {
         gameRef.current.answer(answer);
-        setTick(t => t + 1); // force update
+        setTick((t) => t + 1); // force update
     };
 
     const reset = () => {
         gameRef.current.resetGame();
-        setTick(t => t + 1);
+        setTick((t) => t + 1);
         gameRef.current.startCountdown(
-            () => { setTick(t => t + 1); },
-            () => { handleAnswer(null); }
+            () => {
+                setTick((t) => t + 1);
+            },
+            () => {
+                handleAnswer(null);
+            },
         );
     };
 

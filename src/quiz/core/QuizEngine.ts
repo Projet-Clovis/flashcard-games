@@ -1,4 +1,4 @@
-import { Question } from '../../shared/types/flashcardTypes.ts';
+import { Question } from "../../shared/types/flashcardTypes.ts";
 
 export class QuizEngine {
     private readonly questions: Question[];
@@ -53,7 +53,8 @@ export class QuizEngine {
 
         if (answer !== null) {
             this.selectedAnswer = answer;
-            this.isAnswerCorrect = answer === this.currentQuestion.correctAnswer;
+            this.isAnswerCorrect =
+                answer === this.currentQuestion.correctAnswer;
             if (this.isAnswerCorrect) {
                 const points = Math.max(0, this._timeLeft * 5);
                 this.score += points;
@@ -72,7 +73,7 @@ export class QuizEngine {
             }
         }, 500);
     }
-    
+
     resetTurn() {
         this._timeLeft = this.timeLimit;
         this.selectedAnswer = null;

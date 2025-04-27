@@ -1,14 +1,15 @@
-import {useState, useEffect, useCallback} from 'react';
-import { calculateScore } from '../../shared/utils/scoreUtils.ts';
-import { TimerBar } from '../../shared/components/TimerBar.tsx';
-import { Flashcard } from './Flashcard.tsx';
-import { questions } from '../../shared/data/flashcards-content.ts';
-
+import { useState, useEffect, useCallback } from "react";
+import { calculateScore } from "../../shared/utils/scoreUtils.ts";
+import { TimerBar } from "../../shared/components/TimerBar.tsx";
+import { Flashcard } from "./Flashcard.tsx";
+import { questions } from "../../shared/data/flashcards-content.ts";
 
 export const FlashcardGame = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(
+        null,
+    );
     const [timeLeft, setTimeLeft] = useState(10);
     const [score, setScore] = useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
@@ -37,9 +38,8 @@ export const FlashcardGame = () => {
                 }
             }, 1000);
         },
-        [currentQuestion.correctAnswer, currentQuestionIndex, timeLeft] // Dépendances de useCallback
+        [currentQuestion.correctAnswer, currentQuestionIndex, timeLeft], // Dépendances de useCallback
     );
-
 
     useEffect(() => {
         if (isGameOver) return;
@@ -49,7 +49,9 @@ export const FlashcardGame = () => {
             const timer = setInterval(() => {
                 setTimeLeft((prevTime) => prevTime - 1);
             }, 1000);
-            return () => { clearInterval(timer); };
+            return () => {
+                clearInterval(timer);
+            };
         }
     }, [timeLeft, isGameOver, handleAnswerSelection]);
 
@@ -69,7 +71,9 @@ export const FlashcardGame = () => {
             ) : (
                 <div className="flex flex-col items-center">
                     <div className="text-2xl font-bold mb-4">Jeu terminé !</div>
-                    <div className="text-lg mb-4">Votre score final est : {score} points</div>
+                    <div className="text-lg mb-4">
+                        Votre score final est : {score} points
+                    </div>
                     <button
                         onClick={() => {
                             setCurrentQuestionIndex(0);
