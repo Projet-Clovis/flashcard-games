@@ -4,7 +4,7 @@ import { questions } from "../../shared/data/flashcards-content.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
 import { Flashcard } from "./Flashcard.tsx";
 
-const maxTime = 10;
+const maxTime = 3;
 
 export const FlashcardGame = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
