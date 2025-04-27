@@ -74,7 +74,7 @@ export const FlashcardGame = () => {
                     <div className="text-lg mb-4">
                         Votre score final est : {score} points
                     </div>
-                    <button
+                    <button type="button"
                         onClick={() => {
                             setCurrentQuestionIndex(0);
                             setScore(0);

@@ -20,7 +20,7 @@ export const Flashcard: React.FC<FlashcardProps> = ({
             <div className="text-2xl font-bold mb-4">{question}</div>
             <div className="space-y-4">
                 {options.map((option) => (
-                    <button
+                    <button type="button"
                         key={option}
                         onClick={() => {
                             onAnswerSelect(option);

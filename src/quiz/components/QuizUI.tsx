@@ -34,7 +34,7 @@ export const FlashcardGameUI = () => {
                         🎉 Jeu terminé !
                     </h2>
                     <p className="text-lg mb-4">Score : {score} points</p>
-                    <button className="btn" onClick={reset}>
+                    <button type="button" className="btn" onClick={reset}>
                         Rejouer
                     </button>
                 </div>
