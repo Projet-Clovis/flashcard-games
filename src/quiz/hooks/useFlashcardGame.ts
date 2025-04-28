@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import { questions } from "../../shared/data/flashcards-content.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
+import {Question} from "../../shared/types/flashcardTypes.ts";
 
 export const maxTime = 3;
-export const useFlashcardGame = () => {
+export const useFlashcardGame = (questions: Question[]) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean>(false);

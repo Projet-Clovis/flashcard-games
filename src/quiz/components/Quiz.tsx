@@ -1,6 +1,7 @@
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
 import { maxTime, useFlashcardGame } from "../hooks/useFlashcardGame.ts";
 import { AnimatedFlashcard } from "./AnimatedFlashcard.tsx";
+import {questions} from "../../shared/data/flashcards-content.ts";
 
 export const Quiz = () => {
     const {
@@ -13,7 +14,7 @@ export const Quiz = () => {
         isAnswerCorrect,
         handleAnswerSelection,
         resetGame,
-    } = useFlashcardGame();
+    } = useFlashcardGame(questions);
 
     return (
         <div className="flex flex-col items-center justify-center p-6 max-w-md mx-auto">
