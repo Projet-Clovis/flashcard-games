@@ -1,11 +1,9 @@
-import type React from "react";
-
 interface TimerBarProps {
     timeLeft: number;
     timeLimit: number;
 }
 
-export const TimerBar: React.FC<TimerBarProps> = ({ timeLeft, timeLimit }) => {
+export const TimerBar = ({ timeLeft, timeLimit }: TimerBarProps) => {
     return (
         <div className="w-full mb-4">
             <div className="h-2 bg-gray-200 rounded-full">

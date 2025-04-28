@@ -1,5 +1,3 @@
-import type React from "react";
-
 export interface FlashcardProps {
     question: string;
     options: string[];
@@ -8,13 +6,13 @@ export interface FlashcardProps {
     onAnswerSelect: (answer: string) => void;
 }
 
-export const Flashcard: React.FC<FlashcardProps> = ({
+export const Flashcard = ({
     question,
     options,
     selectedAnswer,
     isAnswerCorrect,
     onAnswerSelect,
-}) => {
+}: FlashcardProps) => {
     return (
         <div className="w-full">
             <div className="text-2xl font-bold mb-4">{question}</div>
