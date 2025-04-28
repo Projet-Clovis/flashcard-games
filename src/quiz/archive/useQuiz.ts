@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { Question } from "../../shared/types/flashcardTypes.ts";
-import { QuizEngine } from "../core/QuizEngine.ts";
+import { QuizEngine } from "./QuizEngine.ts";
 
 export function useFlashcardGame(questions: Question[]) {
     const gameRef = useRef(new QuizEngine(questions));
