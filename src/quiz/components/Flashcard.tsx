@@ -1,6 +1,6 @@
 import type React from "react";
 
-interface FlashcardProps {
+export interface FlashcardProps {
     question: string;
     options: string[];
     selectedAnswer: string | null;

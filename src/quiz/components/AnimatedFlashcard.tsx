@@ -1,13 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Flashcard } from "./Flashcard"; // Importer Flashcard ici
+import { Flashcard, type FlashcardProps } from "./Flashcard"; // Importer Flashcard ici
 
-interface AnimatedFlashcardProps {
-    keyProp: string; // Clé unique pour l'élément animé
-    question: string; // Question à afficher
-    options: string[]; // Options à afficher
-    selectedAnswer: string | null; // Réponse sélectionnée
-    isAnswerCorrect: boolean | null; // Si la réponse est correcte
-    onAnswerSelect: (answer: string | null) => void; // Fonction pour sélectionner la réponse
+interface AnimatedFlashcardProps extends FlashcardProps {
+    keyProp: string;
 }
 
 export const AnimatedFlashcard = ({
