@@ -37,3 +37,24 @@ export const questions: Question[] = [
         correctAnswer: "Oxygène",
     },
 ];
+
+export const questionsTest: Question[] = [
+    {
+        id: 1,
+        question: "q1",
+        options: ["a1", "a2", "a3"],
+        correctAnswer: "a1",
+    },
+    {
+        id: 2,
+        question: "q2",
+        options: ["b1", "b2", "b3"],
+        correctAnswer: "b2",
+    },
+    {
+        id: 3,
+        question: "q3",
+        options: ["c1", "c2", "c3"],
+        correctAnswer: "c3",
+    },
+];
