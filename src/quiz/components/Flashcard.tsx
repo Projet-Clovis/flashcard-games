@@ -30,8 +30,8 @@ export const Flashcard: React.FC<FlashcardProps> = ({
                         className={`w-full p-3 rounded-lg border border-gray-300 ${
                             selectedAnswer === option
                                 ? isAnswerCorrect
-                                    ? "bg-green-500 text-white"
-                                    : "bg-red-500 text-white"
+                                    ? "bg-green-100 text-green-900 border-green-700"
+                                    : "bg-red-100 text-red-900 border-red-700"
                                 : "bg-gray-100 hover:bg-gray-200"
                         }`}
                     >

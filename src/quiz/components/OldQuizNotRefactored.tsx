@@ -38,7 +38,7 @@ export const FlashcardGame = () => {
                     <button
                         type="button"
                         onClick={resetGame}
-                        className="bg-blue-500 text-white p-3 rounded-lg"
+                        className="bg-blue-100 text-blue-900 border border-blue-700 p-3 rounded-lg"
                     >
                         Rejouer
                     </button>
