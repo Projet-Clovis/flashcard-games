@@ -1,9 +1,9 @@
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
+import type { Question } from "../../shared/types/flashcardTypes.ts";
 import { maxTime, useFlashcardGame } from "../hooks/useFlashcardGame.ts";
 import { AnimatedFlashcard } from "./AnimatedFlashcard.tsx";
-import {questions} from "../../shared/data/flashcards-content.ts";
 
-export const Quiz = () => {
+export const Quiz = ({ questions }: { questions: Question[] }) => {
     const {
         currentQuestion,
         currentQuestionIndex,
