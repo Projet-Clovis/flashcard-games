@@ -1,7 +1,7 @@
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
 import { questions } from "../../shared/data/flashcards-content.ts";
-import { useFlashcardGame } from "./useQuiz.ts";
 import { Flashcard } from "../components/Flashcard.tsx";
+import { useFlashcardGame } from "./useQuiz.ts";
 
 export const FlashcardGameUI = () => {
     const {

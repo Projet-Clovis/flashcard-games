@@ -16,11 +16,11 @@ export const AnimatedFlashcard = ({
     return (
         <AnimatePresence mode="wait">
             <motion.div
-                key={keyProp} // Utilise une clé unique pour chaque animation
-                initial={{ opacity: 0, y: 20 }} // Animation d'entrée
-                animate={{ opacity: 1, y: 0 }} // Animation quand la carte est visible
-                exit={{ opacity: 0, y: -20 }} // Animation de sortie
-                transition={{ duration: 0.5 }} // Durée de la transition
+                key={keyProp}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
             >
                 <Flashcard
                     question={question}
