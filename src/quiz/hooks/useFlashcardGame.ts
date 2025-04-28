@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import type { Question } from "../../shared/types/flashcardTypes.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
-import {Question} from "../../shared/types/flashcardTypes.ts";
 
 export const maxTime = 3;
 export const useFlashcardGame = (questions: Question[]) => {
@@ -39,7 +39,12 @@ export const useFlashcardGame = (questions: Question[]) => {
                 }
             }, 1000);
         },
-        [currentQuestion.correctAnswer, currentQuestionIndex, timeLeft],
+        [
+            currentQuestion.correctAnswer,
+            currentQuestionIndex,
+            timeLeft,
+            questions.length,
+        ],
     );
 
     useEffect(() => {
