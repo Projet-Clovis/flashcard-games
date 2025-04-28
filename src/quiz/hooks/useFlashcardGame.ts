@@ -1,0 +1,81 @@
+import { useCallback, useEffect, useState } from "react";
+import { questions } from "../../shared/data/flashcards-content.ts";
+import { calculateScore } from "../../shared/utils/scoreUtils.ts";
+
+export const maxTime = 3;
+export const useFlashcardGame = () => {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(
+        null,
+    );
+    const [timeLeft, setTimeLeft] = useState(maxTime);
+    const [score, setScore] = useState(0);
+    const [isGameOver, setIsGameOver] = useState(false);
+
+    const currentQuestion = questions[currentQuestionIndex];
+
+    const handleAnswerSelection = useCallback(
+        (answer: string | null) => {
+            if (answer !== null) {
+                setSelectedAnswer(answer);
+                setIsAnswerCorrect(answer === currentQuestion.correctAnswer);
+
+                if (answer === currentQuestion.correctAnswer) {
+                    const points = calculateScore(timeLeft);
+                    setScore((prevScore) => prevScore + points);
+                }
+            } else {
+                setSelectedAnswer(null);
+                setIsAnswerCorrect(null);
+            }
+
+            setTimeout(() => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    setCurrentQuestionIndex(currentQuestionIndex + 1);
+                    setTimeLeft(maxTime);
+                    setSelectedAnswer(null);
+                    setIsAnswerCorrect(null);
+                } else {
+                    setIsGameOver(true);
+                }
+            }, 1000);
+        },
+        [currentQuestion.correctAnswer, currentQuestionIndex, timeLeft],
+    );
+
+    useEffect(() => {
+        if (isGameOver) return;
+        if (timeLeft <= 0) {
+            handleAnswerSelection(null);
+        } else {
+            const timer = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime - 1);
+            }, 1000);
+            return () => {
+                clearInterval(timer);
+            };
+        }
+    }, [timeLeft, isGameOver, handleAnswerSelection]);
+
+    const resetGame = () => {
+        setCurrentQuestionIndex(0);
+        setScore(0);
+        setTimeLeft(maxTime);
+        setIsGameOver(false);
+        setSelectedAnswer(null);
+        setIsAnswerCorrect(null);
+    };
+
+    return {
+        currentQuestion,
+        currentQuestionIndex,
+        timeLeft,
+        score,
+        isGameOver,
+        selectedAnswer,
+        isAnswerCorrect,
+        handleAnswerSelection,
+        resetGame,
+    };
+};
