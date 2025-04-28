@@ -1,10 +1,10 @@
-import { FlashcardGame } from "../../quiz/components/OldQuizNotRefactored.tsx";
+import { Quiz } from "../../quiz/components/Quiz.tsx";
 
 function App() {
     return (
         <>
             <div className="p-10">
-                <FlashcardGame />
+                <Quiz />
             </div>
         </>
     );

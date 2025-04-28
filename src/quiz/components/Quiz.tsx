@@ -2,7 +2,7 @@ import { TimerBar } from "../../shared/components/TimerBar.tsx";
 import { maxTime, useFlashcardGame } from "../hooks/useFlashcardGame.ts";
 import { AnimatedFlashcard } from "./AnimatedFlashcard.tsx";
 
-export const FlashcardGame = () => {
+export const Quiz = () => {
     const {
         currentQuestion,
         currentQuestionIndex,
