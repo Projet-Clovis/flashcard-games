@@ -6,9 +6,7 @@ export const maxTime = 3;
 export const useFlashcardGame = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(
-        null,
-    );
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean>(false);
     const [timeLeft, setTimeLeft] = useState(maxTime);
     const [score, setScore] = useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
@@ -27,7 +25,7 @@ export const useFlashcardGame = () => {
                 }
             } else {
                 setSelectedAnswer(null);
-                setIsAnswerCorrect(null);
+                setIsAnswerCorrect(false);
             }
 
             setTimeout(() => {
@@ -35,7 +33,7 @@ export const useFlashcardGame = () => {
                     setCurrentQuestionIndex(currentQuestionIndex + 1);
                     setTimeLeft(maxTime);
                     setSelectedAnswer(null);
-                    setIsAnswerCorrect(null);
+                    setIsAnswerCorrect(false);
                 } else {
                     setIsGameOver(true);
                 }
@@ -64,7 +62,7 @@ export const useFlashcardGame = () => {
         setTimeLeft(maxTime);
         setIsGameOver(false);
         setSelectedAnswer(null);
-        setIsAnswerCorrect(null);
+        setIsAnswerCorrect(false);
     };
 
     return {
