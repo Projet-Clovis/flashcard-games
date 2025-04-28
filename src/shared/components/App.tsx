@@ -1,4 +1,4 @@
-import {FlashcardGame} from "../../quiz/components/OldQuizNotRefactored.tsx";
+import { FlashcardGame } from "../../quiz/components/OldQuizNotRefactored.tsx";
 
 function App() {
     return (

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { TimerBar } from "../../shared/components/TimerBar.tsx";
 import { questions } from "../../shared/data/flashcards-content.ts";
 import { calculateScore } from "../../shared/utils/scoreUtils.ts";
-import {AnimatedFlashcard} from "./AnimatedFlashcard.tsx";
+import { AnimatedFlashcard } from "./AnimatedFlashcard.tsx";
 
 const maxTime = 3;
 
@@ -27,7 +27,6 @@ export const FlashcardGame = () => {
                     const points = calculateScore(timeLeft); // Calcul du score
                     setScore((prevScore) => prevScore + points);
                 }
-
             } else {
                 setSelectedAnswer(null);
                 setIsAnswerCorrect(null);
