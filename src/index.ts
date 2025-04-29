@@ -1,2 +1,2 @@
 export * from "./quiz/components/Quiz";
-import './index.css';
+import "./index.css";
