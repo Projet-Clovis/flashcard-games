@@ -1,0 +1,38 @@
+name: Build & deploy documentation website
+
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Typedoc build
+        run: npx typedoc
+
+      - name: Docusaurus build
+        run: |
+          cd docs
+          npm install
+          npm run build          
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build
+          force_orphan: true
