@@ -6,4 +6,4 @@ export interface FlashcardProps {
 
 export type Question = FlashcardProps & {
     id: number;
-};
+}; // todo: not sure about these types
