@@ -21,7 +21,9 @@ jobs:
           cache: 'npm'
 
       - name: Typedoc build
-        run: npx typedoc
+        run: |
+          npm install
+          npx typedoc
 
       - name: Docusaurus build
         run: |
