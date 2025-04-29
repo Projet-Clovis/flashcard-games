@@ -1,15 +1,15 @@
+import { AnswerChoice } from "./AnswerChoice.tsx";
+
 export interface FlashcardProps {
     question: string;
     options: string[];
     selectedAnswer: string | null;
     isAnswerCorrect: boolean | null;
     onAnswerSelect: (answer: string) => void;
-}
-
-const correctAnswerStyle = "bg-green-100 text-green-900 border-green-700";
-const wrongAnswerStyle = "bg-red-100 text-red-900 border-red-700";
+} // todo: should be renamed
 
 export const Flashcard = ({
+    // todo: should be renamed
     question,
     options,
     selectedAnswer,
@@ -21,23 +21,13 @@ export const Flashcard = ({
             <div className="text-2xl font-bold mb-4">{question}</div>
             <div className="space-y-4">
                 {options.map((option) => (
-                    <button
-                        type="button"
+                    <AnswerChoice
                         key={option}
-                        onClick={() => {
-                            onAnswerSelect(option);
-                        }}
-                        disabled={Boolean(selectedAnswer)} // Désactive après réponse
-                        className={`w-full p-3 rounded-lg border border-gray-300 ${
-                            selectedAnswer === option
-                                ? isAnswerCorrect
-                                    ? correctAnswerStyle
-                                    : wrongAnswerStyle
-                                : "bg-gray-100 hover:bg-gray-200"
-                        }`}
-                    >
-                        {option}
-                    </button>
+                        option={option}
+                        selectedAnswer={selectedAnswer}
+                        isAnswerCorrect={isAnswerCorrect}
+                        onAnswerSelect={onAnswerSelect}
+                    />
                 ))}
             </div>
             {selectedAnswer && (
