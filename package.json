@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "main": "dist/flashcard-games.cjs",
+  "module": "dist/flashcard-games.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b && vite build",
     "ci": "npx @biomejs/biome ci src",
