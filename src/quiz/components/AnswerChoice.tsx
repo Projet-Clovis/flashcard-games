@@ -13,7 +13,6 @@ const wrongAnswerStyle = "bg-red-100 text-red-900 border-red-700";
 const shakeAnimation = {
     x: [0, -2, 2, -2, 2, 0],
     rotate: [0, -2, 2, -2, 2, 0],
-    // backgroundColor: ["#fff", "#EB5757", "#fff"],
     transition: {
         duration: 0.5,
     },
