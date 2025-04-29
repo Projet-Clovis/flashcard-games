@@ -6,6 +6,9 @@ export interface FlashcardProps {
     onAnswerSelect: (answer: string) => void;
 }
 
+const correctAnswerStyle = "bg-green-100 text-green-900 border-green-700";
+const wrongAnswerStyle = "bg-red-100 text-red-900 border-red-700";
+
 export const Flashcard = ({
     question,
     options,
@@ -28,8 +31,8 @@ export const Flashcard = ({
                         className={`w-full p-3 rounded-lg border border-gray-300 ${
                             selectedAnswer === option
                                 ? isAnswerCorrect
-                                    ? "bg-green-100 text-green-900 border-green-700"
-                                    : "bg-red-100 text-red-900 border-red-700"
+                                    ? correctAnswerStyle
+                                    : wrongAnswerStyle
                                 : "bg-gray-100 hover:bg-gray-200"
                         }`}
                     >
