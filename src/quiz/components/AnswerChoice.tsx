@@ -5,7 +5,7 @@ export interface AnswerChoiceProps {
     selectedAnswer: string | null;
     isAnswerCorrect: boolean | null;
     onAnswerSelect: (answer: string) => void;
-} // TODO: should be renamed
+}
 
 const correctAnswerStyle = "bg-green-100 text-green-900 border-green-700";
 const wrongAnswerStyle = "bg-red-100 text-red-900 border-red-700";
