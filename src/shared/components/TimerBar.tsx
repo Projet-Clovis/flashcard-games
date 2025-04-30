@@ -3,6 +3,18 @@ interface TimerBarProps {
     timeLimit: number;
 }
 
+/**
+ * Returns the color of the progress bar based on the remaining percentage.
+ *
+ * Color changes based on the following ranges:
+ * - **Green**: 75% - 100%
+ * - **Yellow**: 50% - 74%
+ * - **Orange**: 25% - 49%
+ * - **Red**: 0% - 25%
+ *
+ * @param {number} percentage - The remaining percentage (from 0 to 100).
+ * @returns {string} The corresponding Tailwind CSS class for the color of the progress bar.
+ */
 function getColor(percentage: number): string {
     const colors = [
         "bg-green-600",
