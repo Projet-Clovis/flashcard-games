@@ -8,7 +8,7 @@
 
 > **useFlashcardGame**(`questions`): `object`
 
-Defined in: [quiz/hooks/useFlashcardGame.ts:35](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/hooks/useFlashcardGame.ts#L35)
+Defined in: [quiz/hooks/useFlashcardGame.ts:35](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/hooks/useFlashcardGame.ts#L35)
 
 Custom hook to manage a flashcard-style quiz game.
 

@@ -6,7 +6,7 @@
 
 # Interface: FlashcardProps
 
-Defined in: [shared/types/flashcardTypes.ts:1](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/shared/types/flashcardTypes.ts#L1)
+Defined in: [shared/types/flashcardTypes.ts:1](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/shared/types/flashcardTypes.ts#L1)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [shared/types/flashcardTypes.ts:1](https://github.com/Projet-Clovis/
 
 > **correctAnswer**: `string`
 
-Defined in: [shared/types/flashcardTypes.ts:4](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/shared/types/flashcardTypes.ts#L4)
+Defined in: [shared/types/flashcardTypes.ts:4](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/shared/types/flashcardTypes.ts#L4)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [shared/types/flashcardTypes.ts:4](https://github.com/Projet-Clovis/
 
 > **options**: `string`[]
 
-Defined in: [shared/types/flashcardTypes.ts:3](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/shared/types/flashcardTypes.ts#L3)
+Defined in: [shared/types/flashcardTypes.ts:3](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/shared/types/flashcardTypes.ts#L3)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [shared/types/flashcardTypes.ts:3](https://github.com/Projet-Clovis/
 
 > **question**: `string`
 
-Defined in: [shared/types/flashcardTypes.ts:2](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/shared/types/flashcardTypes.ts#L2)
+Defined in: [shared/types/flashcardTypes.ts:2](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/shared/types/flashcardTypes.ts#L2)

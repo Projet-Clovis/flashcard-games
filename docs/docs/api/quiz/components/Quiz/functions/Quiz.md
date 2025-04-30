@@ -8,7 +8,7 @@
 
 > **Quiz**(`__namedParameters`): `Element`
 
-Defined in: [quiz/components/Quiz.tsx:6](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Quiz.tsx#L6)
+Defined in: [quiz/components/Quiz.tsx:6](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Quiz.tsx#L6)
 
 ## Parameters
 

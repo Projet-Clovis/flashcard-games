@@ -6,11 +6,10 @@
 
 ## Modules
 
+- [index](index/README.md)
 - [main](main/README.md)
-- [quiz/archive/QuizEngine](quiz/archive/QuizEngine/README.md)
-- [quiz/archive/QuizUI](quiz/archive/QuizUI/README.md)
-- [quiz/archive/useQuiz](quiz/archive/useQuiz/README.md)
 - [quiz/components/AnimatedFlashcard](quiz/components/AnimatedFlashcard/README.md)
+- [quiz/components/AnswerChoice](quiz/components/AnswerChoice/README.md)
 - [quiz/components/Flashcard](quiz/components/Flashcard/README.md)
 - [quiz/components/Quiz](quiz/components/Quiz/README.md)
 - [quiz/components/Quiz.test](quiz/components/Quiz.test/README.md)

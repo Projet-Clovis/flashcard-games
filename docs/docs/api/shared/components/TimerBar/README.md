@@ -6,6 +6,10 @@
 
 # shared/components/TimerBar
 
+## Interfaces
+
+- [TimerBarProps](interfaces/TimerBarProps.md)
+
 ## Functions
 
 - [TimerBar](functions/TimerBar.md)

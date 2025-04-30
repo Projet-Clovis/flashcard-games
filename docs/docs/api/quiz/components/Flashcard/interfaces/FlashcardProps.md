@@ -6,7 +6,7 @@
 
 # Interface: FlashcardProps
 
-Defined in: [quiz/components/Flashcard.tsx:1](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L1)
+Defined in: [quiz/components/Flashcard.tsx:3](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L3)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [quiz/components/Flashcard.tsx:1](https://github.com/Projet-Clovis/f
 
 > **isAnswerCorrect**: `null` \| `boolean`
 
-Defined in: [quiz/components/Flashcard.tsx:5](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L5)
+Defined in: [quiz/components/Flashcard.tsx:7](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L7)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [quiz/components/Flashcard.tsx:5](https://github.com/Projet-Clovis/f
 
 > **onAnswerSelect**: (`answer`) => `void`
 
-Defined in: [quiz/components/Flashcard.tsx:6](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L6)
+Defined in: [quiz/components/Flashcard.tsx:8](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L8)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [quiz/components/Flashcard.tsx:6](https://github.com/Projet-Clovis/f
 
 > **options**: `string`[]
 
-Defined in: [quiz/components/Flashcard.tsx:3](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L3)
+Defined in: [quiz/components/Flashcard.tsx:5](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L5)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [quiz/components/Flashcard.tsx:3](https://github.com/Projet-Clovis/f
 
 > **question**: `string`
 
-Defined in: [quiz/components/Flashcard.tsx:2](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L2)
+Defined in: [quiz/components/Flashcard.tsx:4](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L4)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: [quiz/components/Flashcard.tsx:2](https://github.com/Projet-Clovis/f
 
 > **selectedAnswer**: `null` \| `string`
 
-Defined in: [quiz/components/Flashcard.tsx:4](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L4)
+Defined in: [quiz/components/Flashcard.tsx:6](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L6)

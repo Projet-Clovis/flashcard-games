@@ -8,7 +8,7 @@
 
 > **Flashcard**(`__namedParameters`): `Element`
 
-Defined in: [quiz/components/Flashcard.tsx:9](https://github.com/Projet-Clovis/flashcard-games/blob/cdaa1ee741a03ae1c8c76b5e87cd54da494e38ee/src/quiz/components/Flashcard.tsx#L9)
+Defined in: [quiz/components/Flashcard.tsx:11](https://github.com/Projet-Clovis/flashcard-games/blob/8c85f3457b48eef736423c9679a7c1b51f15688e/src/quiz/components/Flashcard.tsx#L11)
 
 ## Parameters
 
