@@ -19,7 +19,7 @@ const shakeAnimation = {
 };
 
 export const AnswerChoice = ({
-    option,
+    option, // todo: rename parameter
     selectedAnswer,
     isAnswerCorrect,
     onAnswerSelect,
