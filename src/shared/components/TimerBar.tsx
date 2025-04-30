@@ -4,19 +4,19 @@ interface TimerBarProps {
 }
 
 function getColor(percentage: number): string {
-    let barColor = "bg-green-600";
+    const colors = [
+        "bg-green-600",
+        "bg-yellow-600",
+        "bg-orange-600",
+        "bg-red-600",
+    ];
+    const thresholds = [100, 75, 50, 25];
+    let barColor = colors[0];
 
-    if (percentage < 100) {
-        barColor = "bg-green-600";
-    }
-    if (percentage < 75) {
-        barColor = "bg-yellow-600";
-    }
-    if (percentage < 50) {
-        barColor = "bg-orange-600";
-    }
-    if (percentage < 25) {
-        barColor = "bg-red-600";
+    for (let i = 0; i < 4; i++) {
+        if (percentage < thresholds[i]) {
+            barColor = colors[i];
+        }
     }
 
     return barColor;
