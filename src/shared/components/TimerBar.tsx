@@ -1,4 +1,11 @@
-interface TimerBarProps {
+/**
+ * Properties for the TimerBar component.
+ *
+ * @interface TimerBarProps
+ * @property timeLeft - Remaining time in seconds.
+ * @property timeLimit - Total time limit in seconds.
+ */
+export interface TimerBarProps {
     timeLeft: number;
     timeLimit: number;
 }
@@ -12,8 +19,8 @@ interface TimerBarProps {
  * - **Orange**: 25% - 49%
  * - **Red**: 0% - 25%
  *
- * @param {number} percentage - The remaining percentage (from 0 to 100).
- * @returns {string} The corresponding Tailwind CSS class for the color of the progress bar.
+ * @param percentage - The remaining percentage (from 0 to 100).
+ * @returns The corresponding Tailwind CSS class for the color of the progress bar.
  */
 function getColor(percentage: number): string {
     const colors = [
@@ -34,6 +41,13 @@ function getColor(percentage: number): string {
     return barColor;
 }
 
+/**
+ * A progress bar that visually represents the remaining time.
+ *
+ * Bar color changes based on time left: green -> yellow -> orange -> red.
+ *
+ * @returns The TimerBar component displaying the progress and the remaining time.
+ */
 export const TimerBar = ({ timeLeft, timeLimit }: TimerBarProps) => {
     const percentage = (timeLeft / timeLimit) * 100;
     const barColor = getColor(percentage);
